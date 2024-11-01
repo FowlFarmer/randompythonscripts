@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-colors = ['red', 'blue', 'green', 'orange', 'purple', 'black', 'yellow']
+colors = ['red', 'blue', 'green', 'orange', 'purple', 'black', 'yellow', 'aqua', 'indigo', 'peru', 'maroon']
 
 
 print('Input the name of your x axis...')
@@ -30,7 +30,7 @@ for i in range(length):
 
     x_filtered = data[x_axis_name]
     y_filtered = data[y_axis_name]
-    plt.scatter(x_filtered, y_filtered, color = (colors[i] if (length <= 7) else 'black'), marker='o')
+    plt.scatter(x_filtered, y_filtered, color = (colors[i] if (length <= 11) else 'black'), marker='o')
 
 
 # Add labels and a title
