@@ -1,6 +1,10 @@
 #!/bin/bash
 
+trap "echo 'Exiting...'; exit" SIGINT
+
 while true; do
-    x # Replace 'x' with the command you want to run
-    sleep 1 # Optional: Add a delay to prevent high CPU usage (adjust as needed)
+        timeout 3s rostopic pub -1 /$1/navigate/goal oks_msgs/NavigateActionGoal "{goal: {pose: {pose: {position: {x: 0.0, y: 0.0, z: 0.0}, orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}}}}}"
+        sleep 1
+        timeout 3s rostopic pub -1 /$1/navigate/goal oks_msgs/NavigateActionGoal "{goal: {pose: {pose: {position: {x: 1.12, y: 0.0, z: 0.0}, orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}}}}}"
+        sleep 1
 done
