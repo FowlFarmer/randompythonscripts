@@ -42,6 +42,15 @@ class mapper:
             cv2.COLORMAP_JET
         )[self.dissolved_oxygen_sensor_mask]
         return self.map
+    
+    def render_map(self):
+        """
+        imshow
+        """
+        cv2.imshow('Map', self.map)
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
+        
             
 
 if __name__ == "__main__":

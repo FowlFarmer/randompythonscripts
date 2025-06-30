@@ -23,6 +23,7 @@ from rclpy.node import Node, Timer
 # msg imports
 from geometry_msgs.msg import Pose
 from sensor_msgs.msg import CompressedImage
+from std_msgs.msg import Float32
 
 class Anomaly(Node):
 
@@ -36,11 +37,11 @@ class Anomaly(Node):
         # Initialize ROS2 Constructs
         self.map_publisher = self.create_publisher(CompressedImage, '/image_sub_placeholder', 10)
         self.pose_subscription = self.create_subscription(
-            Pose, '/pose_placeholder', self.pose_callback, 10)
+            Pose, '/asv/gps_mission_info', self.pose_callback, 10)
         # self.subscription = self.create_subscription(
         #     Temperature, '/temp_placeholder', self.unfiltered_callback, 10)
         self.dissolved_oxygen_subscription = self.create_subscription(
-            DissolvedOxygen, '/dissolved_oxygen_placeholder', self.dissolved_oxygen_callblack, 10
+            Float32, '/do', self.dissolved_oxygen_callblack, 10
         )
         self.timer = self.create_timer(0.1, self.timer_callback) # 10fps map update rate
 
